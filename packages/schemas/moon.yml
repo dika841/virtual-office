@@ -1,0 +1,20 @@
+$schema: 'https://moonrepo.dev/schemas/project.json'
+
+id: 'schemas'
+layer: 'library'
+language: 'typescript'
+
+tasks:
+  build:
+    command: 'pnpm build'
+    inputs:
+      - 'src/**/*'
+      - 'tsconfig.json'
+      - 'package.json'
+
+  test:
+    command: 'pnpm test'
+    inputs:
+      - 'src/**/*'
+      - 'tsconfig.json'
+      - 'package.json'

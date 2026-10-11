@@ -1,0 +1,14 @@
+name: virtual-office-local
+
+services:
+  # Optional local Redis for testing offline without external network
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    volumes:
+      - virtual-office-redis:/data
+
+volumes:
+  virtual-office-redis:

@@ -1,0 +1,4 @@
+# Copy to .dev.vars for `wrangler dev`. Values match docker-compose.dev.yml.
+DATABASE_URL=postgres://postgres:postgres@db.localtest.me:5434/virtual_office
+UPSTASH_REDIS_REST_URL=http://localhost:8079
+UPSTASH_REDIS_REST_TOKEN=local_srh_token

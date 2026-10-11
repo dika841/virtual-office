@@ -1,0 +1,36 @@
+$schema: 'https://moonrepo.dev/schemas/project.json'
+
+id: 'api'
+layer: 'application'
+language: 'typescript'
+stack: 'backend'
+
+tasks:
+  dev:
+    command: 'pnpm dev'
+    options:
+      persistent: true
+      runInCI: false
+
+  build:
+    command: 'pnpm build'
+    inputs:
+      - 'src/**/*'
+      - 'wrangler.jsonc'
+      - 'tsconfig.json'
+      - 'package.json'
+      - '/package.json'
+
+  test:
+    command: 'pnpm test'
+    inputs:
+      - 'src/**/*'
+      - 'tsconfig.json'
+      - 'package.json'
+
+  deploy:
+    command: 'pnpm run deploy'
+    deps:
+      - '~:build'
+    options:
+      runInCI: false

@@ -1,0 +1,42 @@
+$schema: 'https://moonrepo.dev/schemas/project.json'
+
+id: 'database'
+layer: 'library'
+language: 'typescript'
+
+tasks:
+  build:
+    command: 'pnpm build'
+    inputs:
+      - 'src/**/*'
+      - 'drizzle.config.ts'
+      - 'tsconfig.json'
+      - 'package.json'
+
+  test:
+    command: 'pnpm test'
+    inputs:
+      - 'src/**/*'
+      - 'tsconfig.json'
+      - 'package.json'
+
+  db-generate:
+    command: 'pnpm db:generate'
+    options:
+      runInCI: false
+
+  db-migrate:
+    command: 'pnpm db:migrate'
+    options:
+      runInCI: false
+
+  db-push:
+    command: 'pnpm db:push'
+    options:
+      runInCI: false
+
+  db-studio:
+    command: 'pnpm db:studio'
+    options:
+      runInCI: false
+      persistent: true

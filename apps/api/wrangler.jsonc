@@ -1,0 +1,20 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "virtual-office-api",
+	"main": "src/worker.ts",
+	"compatibility_date": "2026-10-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+	// One PresenceHub instance per workspace (idFromName(workspaceId)).
+	"durable_objects": {
+		"bindings": [{ "name": "PRESENCE_HUB", "class_name": "PresenceHub" }]
+	},
+	"migrations": [{ "tag": "v1", "new_sqlite_classes": ["PresenceHub"] }],
+	"vars": {
+		"WEB_ORIGIN": "http://localhost:5173"
+	}
+	// Secrets (wrangler secret put / .dev.vars locally):
+	// DATABASE_URL, UPSTASH_REDIS_REST_URL, UPSTASH_REDIS_REST_TOKEN
+}

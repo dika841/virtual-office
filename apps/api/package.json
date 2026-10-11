@@ -1,0 +1,33 @@
+{
+  "name": "@virtual-office/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "build": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "deploy": "wrangler deploy",
+    "deploy:dry-run": "wrangler deploy --dry-run"
+  },
+  "dependencies": {
+    "@orpc/server": "catalog:",
+    "@orpc/zod": "catalog:",
+    "@upstash/redis": "catalog:",
+    "@virtual-office/database": "workspace:*",
+    "@virtual-office/schemas": "workspace:*",
+    "drizzle-orm": "catalog:",
+    "hono": "catalog:",
+    "zod": "catalog:",
+    "better-auth": "catalog:"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "wrangler": "catalog:"
+  }
+}
